@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Google Custom Search actions
+ * Plugin URI: https://github.com/fiveeightsix/fes-google-cs-actions
  * Description: Integrate a Google custom search engine into a WordPress site using action hooks.
  * Author: Karl Inglis
  * Author URI: http://web.karlinglis.net

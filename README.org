@@ -46,7 +46,7 @@ Integrate a Google custom search engine into a WordPress site using action hooks
 
 * Usage
 
-  This plugin needs to be integrated into a custom theme (or perhaps plugin) in order to work. To facilitate this, it uses the [[https://codex.wordpress.org/Plugin_API][WordPress plugin API]] to provide two [[https://codex.wordpress.org/Glossary#Action][action hooks]] that can be called in templates with =[[https://developer.wordpress.org/reference/functions/do_action/][do_action]]=:
+  This plugin needs to be integrated into a custom theme (or perhaps plugin) in order to work. To facilitate this, it uses the [[https://codex.wordpress.org/Plugin_API][WordPress plugin API]] to provide two [[https://codex.wordpress.org/Glossary#Action][action hooks]] that can be called in templates with [[https://developer.wordpress.org/reference/functions/do_action/][=do_action=]]:
 
   - =fes_gcse_search_box= :: Adds the search box custom element HTML, like so:
        

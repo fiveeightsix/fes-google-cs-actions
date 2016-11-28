@@ -9,5 +9,5 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Remove plugin option from the database.
-delete_option( 'fes_gcse_options' );
+delete_option( 'fes_gcsa_options' );
 ?>

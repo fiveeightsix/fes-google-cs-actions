@@ -1,0 +1,75 @@
+#+TITLE: Google Custom Search actions
+#+DATE: <2016-01-23 Sat>
+#+AUTHOR: Karl Inglis
+#+OPTIONS: num:nil 
+#+LANGUAGE: en
+
+Integrate a Google custom search engine into a WordPress site using action hooks.
+
+* What does it do?
+
+  - Stores custom search engine settings in the site database.
+  - Provides actions to cleanly output the correct search engine code into themes and templates.
+
+* What does it NOT do?
+
+  - Provide an out-of-the-box replacement for standard WordPress search.
+  - Anything at all without some theme coding.
+
+* Installation
+
+  Usual drill:
+
+  1. Upload the =fes-google-cse= directory into your =/wp-content/plugins/= directory
+  
+  2. Activate the plugin through the 'Plugins' menu in WordPress.
+
+* Configuration
+
+** Google custom search
+
+   1. Set up a custom search engine for your site (you'll need a Google account, obviously).
+
+   2. In the custom search control panel, under 'Edit search engine' > 'Look and feel', choose the 'Two page' option from the 'Layout' tab (the plugin does not yet work with any of the other layouts).
+
+   3. Still in the control panel, pick a theme or customise the elements to match your site.
+
+   4. Under 'Edit search engine' > 'Setup', click the button to retrieve your search engine ID (/keep it secret, keep it safe!/).
+
+** Plugin configuration
+
+   1. /Recommended/: Disable the built-in WordPress search, perhaps using the aptly-named [[https://wordpress.org/plugins/disable-search/][Disable Search plugin]] by [[https://profiles.wordpress.org/coffee2code/][Scott Reilly]].
+
+   2. Create the page you want the search results to appear on (this will need to contain the =<gcse:seachbox-only>= tag; see 'Usage' below).
+
+   3. Navigate to the 'Settings' > 'Google CSE' page in the WordPress dash, and enter the slug of the results page, along with your search engine ID, into the appropriate fields. Press 'Save Changes'.
+
+* Usage
+
+  This plugin needs to be integrated into a custom theme (or perhaps plugin) in order to work. To facilitate this, it uses the [[https://codex.wordpress.org/Plugin_API][WordPress plugin API]] to provide two [[https://codex.wordpress.org/Glossary#Action][action hooks]] that can be called in templates with =[[https://developer.wordpress.org/reference/functions/do_action/][do_action]]=:
+
+  - =fes_gcse_search_box= :: Adds the search box custom element HTML, like so:
+       
+    #+BEGIN_SRC php
+      <?php do_action( 'fes_gcse_search_box' ); ?>
+    #+END_SRC
+
+    This is intended to go in the themes =header.php=, or maybe a custom widget, so it appears on all pages.
+
+  - =fes_gcse_search_results= :: Adds the custom element HTML to display search results, as follows:
+
+    #+BEGIN_SRC php
+      <?php do_action( 'fes_gcse_search_resuls' ); ?>
+    #+END_SRC
+
+    The best way to do this would be a custom page template, but widgets or content filters might work too.
+  
+  Note that the plugin will add the necessary Google code for you, there is no need to paste any of the custom elements or JavaScript from the 'Get code' button in the custom search control panel anywhere on your site.
+
+* Hooks used
+
+  - =admin_menu= :: Adding option page.
+  - =admin_init= :: Setting up plugin options.
+  - =wp_enqueue_scripts= :: Adding Google custom search JavaScript.
+
+  

@@ -20,7 +20,7 @@ Integrate a Google custom search engine into a WordPress site using action hooks
 
   Usual drill:
 
-  1. Upload the =fes-google-cse= directory into your =/wp-content/plugins/= directory
+  1. Upload the =fes-google-cs-actions= directory into your =/wp-content/plugins/= directory
   
   2. Activate the plugin through the 'Plugins' menu in WordPress.
 
@@ -42,24 +42,24 @@ Integrate a Google custom search engine into a WordPress site using action hooks
 
    2. Create the page you want the search results to appear on (this will need to contain the =<gcse:seachbox-only>= tag; see 'Usage' below).
 
-   3. Navigate to the 'Settings' > 'Google CSE' page in the WordPress dash, and enter the slug of the results page, along with your search engine ID, into the appropriate fields. Press 'Save Changes'.
+   3. Navigate to the 'Settings' > 'Google CS actions' page in the WordPress dash, and enter the slug of the results page, along with your search engine ID, into the appropriate fields. Press 'Save Changes'.
 
 * Usage
 
   This plugin needs to be integrated into a custom theme (or perhaps plugin) in order to work. To facilitate this, it uses the [[https://codex.wordpress.org/Plugin_API][WordPress plugin API]] to provide two [[https://codex.wordpress.org/Glossary#Action][action hooks]] that can be called in templates with [[https://developer.wordpress.org/reference/functions/do_action/][do_action]]:
 
-  - =fes_gcse_search_box= :: Adds the search box custom element HTML, like so:
+  - =fes_gcsa_search_box= :: Adds the search box custom element HTML, like so:
        
     #+BEGIN_SRC php
-      <?php do_action( 'fes_gcse_search_box' ); ?>
+      <?php do_action( 'fes_gcsa_search_box' ); ?>
     #+END_SRC
 
     This is intended to go in the themes =header.php=, or maybe a custom widget, so it appears on all pages.
 
-  - =fes_gcse_search_results= :: Adds the custom element HTML to display search results, as follows:
+  - =fes_gcsa_search_results= :: Adds the custom element HTML to display search results, as follows:
 
     #+BEGIN_SRC php
-      <?php do_action( 'fes_gcse_search_resuls' ); ?>
+      <?php do_action( 'fes_gcsa_search_resuls' ); ?>
     #+END_SRC
 
     The best way to do this would be a custom page template, but widgets or content filters might work too.

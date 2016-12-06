@@ -24,6 +24,21 @@ function fes_gcsa_script_url() {
 }
 
 /**
+ * Add async attribute to google search script.
+ *
+ * @param $tag (string) The <script> tag for the enqueued script.
+ * @param $handle (string) The script's registered handle.
+ * @returns (string) Filtered <script> tags.
+ */
+function fes_gcsa_add_async_attribute( $tag, $handle ) {
+  if ( $handle === 'fes-google-search' ) {
+    return str_replace( ' src', ' async="async" src', $tag );
+  }
+  return $tag;
+}
+add_filter( 'script_loader_tag', 'fes_gcsa_add_async_attribute', 10, 2 );
+
+/**
  * Enqueue Google CSE script.
  */
 function fes_gcsa_scripts() {

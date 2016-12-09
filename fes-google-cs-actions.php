@@ -51,7 +51,7 @@ add_action( 'wp_enqueue_scripts', 'fes_gcsa_scripts' );
  */
 function fes_gcsa_search_box() {
   $options = get_option( 'fes_gcsa_options' );
-  echo '<gcse:searchbox-only resultsUrl="' . site_url( '/' . $options['site_url'] ) . '"></gcse:searchbox-only>';
+  echo '<gcse:searchbox-only resultsUrl="' . site_url( '/' . $options['results_page'] ) . '"></gcse:searchbox-only>';
 }
 add_action( 'fes_gcsa_search_box', 'fes_gcsa_search_box' );
 
